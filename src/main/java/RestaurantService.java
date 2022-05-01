@@ -32,4 +32,18 @@ public class RestaurantService {
     public List<Restaurant> getRestaurants() {
         return restaurants;
     }
+
+    public int getTotalAmount(Restaurant restaurant, List<String> itemList) {
+        int totalAmount = 0;
+        List<Item> restaurantMenu = restaurant.getMenu();
+
+        for (Item eachItem : restaurantMenu) {
+
+            if (itemList.contains(eachItem.getName())) {
+                totalAmount += eachItem.getPrice();
+            }
+        }
+
+        return totalAmount;
+    }
 }
